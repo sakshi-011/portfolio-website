@@ -45,6 +45,16 @@ const controlHandlerForm = async function (e) {
   }
 };
 
+const controlHandlerImageQuiz = function (e) {
+  if (
+    ['chandelier', 'ceiling light', 'ceiling lamp'].includes(
+      e.target.value.toLowerCase()
+    )
+  ) {
+    mainView.renderQuizResult(true);
+  }
+};
+
 function init() {
   console.log(
     `        
@@ -67,6 +77,7 @@ function init() {
     `
   );
   mainView.addHandlerBio(controlHandlerBio);
+  mainView.addHandlerImageQuiz(controlHandlerImageQuiz);
   contact.addHandlerForm(controlHandlerForm);
 }
 init();

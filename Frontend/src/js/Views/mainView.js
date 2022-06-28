@@ -5,6 +5,8 @@ class MainView {
   _footer = document.querySelector('footer');
   _bioDotsContainer = document.querySelector('.dots--container');
   _bioContent = document.querySelector('.bio');
+  _imageQuizInput = document.querySelector('#user--input');
+  _imageQuizAnswer = document.querySelector('.quiz--answer');
 
   // _sectionObserver = new IntersectionObserver(
   //   (entries, observer) => {
@@ -34,6 +36,18 @@ class MainView {
       _bioDots.forEach(dot => dot.classList.remove('dot--active'));
       dot.classList.add('dot--active');
       handler();
+    });
+  }
+
+  renderQuizResult(isWin) {
+    if (!isWin) return;
+    this._imageQuizAnswer.innerHTML = `<p class="text--small">That is the correct answer :)</p>`;
+  }
+
+  addHandlerImageQuiz(handler) {
+    this._imageQuizInput.addEventListener('keypress', function (e) {
+      if (e.keyCode !== 13) return;
+      handler(e);
     });
   }
 
