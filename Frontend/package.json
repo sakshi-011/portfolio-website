@@ -1,13 +1,32 @@
 {
-  "name": "portfolio-website",
+  "name": "sakshi-portfolio-website",
   "version": "1.0.0",
-  "description": "A very sakshi website. Less descriptive, more sarcastic.",
+  "description": "A very sakshi website. Less cryptic, more sarcastic.",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
     "build": "build parcel index.html"
   },
-  "author": "sakshi",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakshi-011/portfolio-website.git"
+  },
+  "keywords": [
+    "Portfolio",
+    "Web",
+    "Sakshi",
+    "JavaScript",
+    "Spring",
+    "Boot",
+    "Java",
+    "HTML",
+    "CSS"
+  ],
+  "author": "Sakshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sakshi-011/portfolio-website/issues"
+  },
   "dependencies": {
     "core-js": "^3.21.1",
     "regenerator-runtime": "^0.13.9"
