@@ -209,11 +209,6 @@ main {
   margin-bottom: 1.5rem;
 }
 
-#project--block {
-  background-color: var(--color-light-blue);
-  padding: 2.5rem 5vw;
-}
-
 .intro--content a {
   color: inherit;
   box-shadow: inset 0 -10px 0 0 var(--color-purple-three);
@@ -295,6 +290,11 @@ main {
   letter-spacing: 0.1em;
   font-size: 16px;
   padding-left: 0.2em;
+}
+
+#project--block {
+  background-color: var(--color-light-blue);
+  padding: 2.5rem 5vw;
 }
 
 .project--list {
@@ -403,13 +403,13 @@ main {
 
 #contact--block {
   border: none;
-  background-color: var(--color-teal-one);
 }
 
 .contact--container {
-  background-color: var(--color-cream-one);
   min-height: var(--main-height);
   padding: 1rem;
+  box-shadow: 6px 6px 10px var(--color-blue-one);
+  word-wrap: break-word;
 }
 
 .contact--container img {
@@ -435,7 +435,7 @@ main {
   border: solid 0.3px var(--color-gray-four);
   margin-bottom: 1rem;
   width: 90%;
-  background-color: var(--color-cream-one);
+  background-color: var(--color-cream-two);
   color: var(--color-gray-three);
   border-radius: 4px;
   outline: none;
@@ -450,7 +450,7 @@ main {
   width: 100px;
   border-radius: 4px;
   padding: 0.2em;
-  background-color: #000;
+  background-color: var(--color-teal-one);
   color: #fff;
   font-size: large;
   font-weight: bold;
