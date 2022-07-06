@@ -6,7 +6,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Service;
-
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,15 @@ public class ImageService {
     private ResourceLoader resourceLoader = new DefaultResourceLoader();
     private ResourcePatternResolver resourcePatResolver = new PathMatchingResourcePatternResolver();
 
-    public List<Resource> getAllImagesInFolder() throws IOException {
+    public List<File> getAllImagesInFolder() throws IOException {
         Resource[] allResources = resourcePatResolver.getResources("classpath:images/image2/*.jpg");
-        List<Resource> resourceList = new ArrayList<Resource>();
+        List<File> resourceList = new ArrayList<File>();
         for(Resource res : allResources){
-            resourceList.add(res);
+            resourceList.add(res.getFile());
         }
         return resourceList;
     }
+
+
 
 }
