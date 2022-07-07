@@ -14,11 +14,10 @@ import java.util.List;
 @Service
 public class ImageService {
 
-    private ResourceLoader resourceLoader = new DefaultResourceLoader();
     private ResourcePatternResolver resourcePatResolver = new PathMatchingResourcePatternResolver();
 
-    public List<File> getAllImagesInFolder() throws IOException {
-        Resource[] allResources = resourcePatResolver.getResources("classpath:images/image2/*.jpg");
+    private List<File> getAllImagesInFolder(String folderName) throws IOException {
+        Resource[] allResources = resourcePatResolver.getResources("classpath:images/"+folderName+"/*.jpg");
         List<File> resourceList = new ArrayList<File>();
         for(Resource res : allResources){
             resourceList.add(res.getFile());
@@ -26,6 +25,10 @@ public class ImageService {
         return resourceList;
     }
 
-
+    public List<File> getRandomImageFolder() throws IOException {
+        int randomNumber = (int) (Math.random() * 5) + 1;
+        List<File> files = getAllImagesInFolder("image"+randomNumber);
+        return files;
+    }
 
 }
