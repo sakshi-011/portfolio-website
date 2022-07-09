@@ -2,8 +2,9 @@
 
 import mainView from './Views/mainView.js';
 import { bioArray } from './model.js';
-import contact from './contact.js';
-import { FORM_URL } from './config.js';
+import contact from './Views/contact.js';
+import { FORM_URL, BASE_URL } from './config.js';
+import * as jsZip from 'jszip';
 
 const form = document.querySelector('.contact--form');
 
@@ -45,13 +46,30 @@ const controlHandlerForm = async function (e) {
   }
 };
 
-const controlHandlerImageQuiz = function (e) {
-  if (
-    ['chandelier', 'ceiling light', 'ceiling lamp'].includes(
-      e.target.value.toLowerCase()
-    )
-  ) {
-    mainView.renderQuizResult(true);
+const controlHandlerImage = async function () {
+  try {
+    const res = await fetch(`${BASE_URL}/api/random-image/zip`);
+
+    const data = await res.arrayBuffer();
+    if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+
+    const unzip = await jsZip.loadAsync(data);
+
+    unzip.forEach((fileName, file) => {
+      if (fileName !== 'original.jpg')
+        unzip
+          .file(fileName)
+          .async('arraybuffer')
+          .then(image => {
+            const buffer = new Uint8Array(image);
+            const blob = new Blob([buffer.buffer]);
+            const img = new Image();
+            img.src = URL.createObjectURL(blob);
+            mainView.renderPuzzleImage(img.src);
+          });
+    });
+  } catch (err) {
+    throw err;
   }
 };
 
@@ -77,7 +95,8 @@ function init() {
     `
   );
   mainView.addHandlerBio(controlHandlerBio);
-  mainView.addHandlerImageQuiz(controlHandlerImageQuiz);
+  mainView.addHandlerRefreshButton(controlHandlerImage);
   contact.addHandlerForm(controlHandlerForm);
+  controlHandlerImage();
 }
 init();

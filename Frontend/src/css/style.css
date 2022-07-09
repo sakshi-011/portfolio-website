@@ -252,12 +252,12 @@ main {
   background-color: var(--color-light-green);
 }
 
-.image--container {
+.puzzle--area {
   padding-top: 1rem;
   text-align: center;
 }
 
-.image--container p {
+.puzzle--area p {
   font-size: 0.85rem;
   margin: 0;
 }
@@ -266,10 +266,23 @@ main {
   display: inline-block;
 }
 
-#image--jumbled {
-  height: 30%;
-  width: 90%;
-  margin: 1rem 0;
+.image--puzzle {
+  margin: auto;
+}
+
+.image--container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  height: 390px;
+  max-width: 390px;
+  margin: auto;
+}
+
+.puzzle--piece {
+  max-height: 100%;
+  max-width: 100%;
+  border: solid 3px var(--color-cream-one);
 }
 
 .btn--refresh {
@@ -559,7 +572,7 @@ footer {
     padding-top: 4rem;
   }
 
-  .image--container {
+  .puzzle--area {
     width: 50%;
     margin-top: 0;
   }
@@ -570,3 +583,10 @@ footer {
     margin-bottom: 1rem;
   }
 }
+
+/* @media (max-width: 400px) {
+  .puzzle--area {
+    visibility: hidden;
+    opacity: 0;
+  }
+} */

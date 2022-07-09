@@ -5,8 +5,9 @@ class MainView {
   _footer = document.querySelector('footer');
   _bioDotsContainer = document.querySelector('.dots--container');
   _bioContent = document.querySelector('.bio');
-  _imageQuizInput = document.querySelector('#user--input');
   _imageQuizAnswer = document.querySelector('.quiz--answer');
+  _btnRefresh = document.querySelector('.btn--refresh');
+  _puzzleArea = document.querySelector('.image--container');
 
   // _sectionObserver = new IntersectionObserver(
   //   (entries, observer) => {
@@ -44,10 +45,17 @@ class MainView {
     this._imageQuizAnswer.innerHTML = `<p class="text--small">That is the correct answer :)</p>`;
   }
 
-  addHandlerImageQuiz(handler) {
-    this._imageQuizInput.addEventListener('keypress', function (e) {
-      if (e.keyCode !== 13) return;
-      handler(e);
+  //refresh button click - flush previous images
+  //fix css
+  renderPuzzleImage(imageURL) {
+    const html = `<img class="puzzle--piece" src=${imageURL} alt="a random image from sakshi"/>`;
+    this._puzzleArea.insertAdjacentHTML('beforeend', html);
+  }
+
+  addHandlerRefreshButton(handler) {
+    this._btnRefresh.addEventListener('click', function (e) {
+      document.querySelector('.image--container').innerHTML = '';
+      handler();
     });
   }
 
