@@ -5,7 +5,11 @@
   "default": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
+    "clean-dist": "rd /s /q dist && mkdir dist",
+    "make-folder": "cd dist && mkdir templates",
+    "copy-data": "xcopy \"src/templates/*\" \"dist/templates\" /f /c /q",
+    "init": "npm run clean-dist && npm run make-folder && npm run copy-data",
+    "start": "parcel index.html templates/*",
     "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
