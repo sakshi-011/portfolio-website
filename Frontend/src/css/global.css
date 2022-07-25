@@ -522,6 +522,22 @@ footer {
   margin: auto;
 }
 
+.certi--container {
+  width: 70%;
+  margin: auto;
+  padding: 10px 2px;
+}
+
+.certi {
+  width: 100%;
+  max-height: 500px;
+}
+
+.certi--image img {
+  max-width: 350px;
+  max-height: 250px;
+}
+
 @media (min-width: 580px) {
   header {
     display: flex;
