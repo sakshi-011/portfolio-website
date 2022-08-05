@@ -59,6 +59,7 @@ body {
 .hidden {
   visibility: hidden;
   opacity: 0;
+  display: none;
 }
 
 .overlay {
@@ -132,7 +133,7 @@ a {
   float: right;
 }
 
-header {
+.main--header {
   background: var(--color-gray-one);
   border-bottom: 4px solid var(--color-light-green);
   margin: 0;
